@@ -1,0 +1,56 @@
+.Modal__wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, .8);
+}
+
+.Modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+  width: 100%;
+  max-width: 600px;
+}
+
+.Modal__header {
+  padding: 22px 24px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.Modal__body {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  padding: 40px 24px;
+}
+
+.Modal__close {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background: center / contain no-repeat url(../assets/images/icon-close.png) #ffffff;
+  }
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  cursor: pointer;
+}

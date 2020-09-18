@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,36 +23,104 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="322c6f44-c6ea-4078-a4af-513c9d15989d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/JeJu-Blockahin-Hackathon.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/GlobalStyles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/components/Test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/klaytn/caver.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/react-app-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/redux/actions/actionTypes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/redux/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/routes/Home/HomeContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/routes/Home/HomePresenter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/src/routes/Home/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/yarn.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/App.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/fonts/SFUIText-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/fonts/SFUIText-Light.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/fonts/SFUIText-Medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/fonts/SFUIText-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/fonts/SFUIText-Semibold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/Skkrypto.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/baby1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/facebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/facebook2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/favicon@16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/icon-close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/icon-copyright.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/icon-lock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/icon-logout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/icon-profile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/icon-transfer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/icon-wallet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/instagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/klaystagram-video-poster.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/klaytn-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/loading.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/logo-klaystagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/main.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/skkrypto.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/assets/images/user.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Button.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/CopyrightInfo.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/CopyrightInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/ExampleModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Feed.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Feed.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Footer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/IconButton.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/IconButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Input.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Input.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/InputFile.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/InputFile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/LinkNewTab.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Loading.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Loading.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/LoginForm.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/LoginForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Modal.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Modal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/NFT.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/NFTModalDetail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Nav.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Nav.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/PhotoHeader.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/PhotoHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/PhotoInfo.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/PhotoInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/PrivateKeyInput.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/SignUpForm.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/SignUpForm.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Textarea.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/Textarea.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/TransferOwnership.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/TransferOwnershipButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/UploadModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/UploadModalDetail.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/UploadModalDetail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/WalletInfo.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/WalletInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/WalletModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/components/WalletModalDetail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/constants/url.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/routes/Detail/DetailContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/routes/Detail/DetailPresenter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/routes/Detail/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/routes/SignUp/SignUpContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/routes/SignUp/SignUpPresenter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/routes/SignUp/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/styles/_colors.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/styles/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/styles/_sizes.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/styles/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/utils/crypto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/utils/imageCompression.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/utils/imageUtils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/utils/misc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/src/utils/ui.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/project/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/GlobalStyles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/GlobalStyles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/components/Test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/components/Test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/routes/Home/HomeContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/routes/Home/HomeContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/src/routes/Home/HomePresenter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/project/src/routes/Home/HomePresenter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/project/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,9 +130,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
         <option value="JavaScript File" />
+        <option value="SCSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -76,9 +148,18 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project/src/assets/images" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/project/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/project/src/assets/images" />
+      <recent name="$PROJECT_DIR$/project/src/styles" />
+      <recent name="$PROJECT_DIR$/project/src/assets/fonts" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -88,7 +169,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1600230901348</updated>
-      <workItem from="1600230902366" duration="5327000" />
+      <workItem from="1600230902366" duration="14644000" />
+      <workItem from="1600327380468" duration="3205000" />
+      <workItem from="1600336254022" duration="31393000" />
     </task>
     <servers />
   </component>
@@ -105,11 +188,26 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="950" y="385" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600238391670">
+    <state x="950" y="385" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600343254223">
       <screen x="0" y="23" width="2560" height="1333" />
     </state>
-    <state x="950" y="385" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.2560.1333@0.23.2560.1333" timestamp="1600238391670" />
+    <state x="950" y="385" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.2560.1333@0.23.2560.1333" timestamp="1600343254223" />
+    <state x="100" y="123" width="2360" height="1133" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1600361192020">
+      <screen x="0" y="23" width="2560" height="1333" />
+    </state>
+    <state x="100" y="123" width="2360" height="1133" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-960.806.960.681/0.23.2560.1333@0.23.2560.1333" timestamp="1600361192020" />
+    <state x="905" y="399" width="748" height="580" key="find.popup" timestamp="1600431724226">
+      <screen x="0" y="23" width="2560" height="1333" />
+    </state>
+    <state x="905" y="399" width="748" height="580" key="find.popup/-960.806.960.681/0.23.2560.1333@0.23.2560.1333" timestamp="1600356481396" />
+    <state x="905" y="399" width="748" height="580" key="find.popup/0.23.2560.1333@0.23.2560.1333" timestamp="1600431724226" />
+    <state x="858" y="318" width="840" height="1034" key="search.everywhere.popup" timestamp="1600434544392">
+      <screen x="0" y="23" width="2560" height="1333" />
+    </state>
+    <state x="858" y="318" width="840" height="1034" key="search.everywhere.popup/-960.806.960.681/0.23.2560.1333@0.23.2560.1333" timestamp="1600434544392" />
+    <state x="858" y="318" width="840" height="1034" key="search.everywhere.popup/0.23.2560.1333@0.23.2560.1333" timestamp="1600432124128" />
   </component>
 </project>

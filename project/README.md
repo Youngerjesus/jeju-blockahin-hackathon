@@ -34,4 +34,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 #### yarn add styled-components
 #### yarn add caver-js 
 #### yarn add styled-reset 
+#### yarn add node-sass
+#### yarn add moment 
 

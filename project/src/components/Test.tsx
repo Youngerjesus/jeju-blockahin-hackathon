@@ -8,12 +8,14 @@ const Test:React.FunctionComponent = (props) => {
     testFunction();
 
     return (
-        <div>
-            Test
-        </div>
+        <None>
+        </None>
     )
 }
 
+const None = styled.div`
+    display:none; 
+`
 const testFunction = () => {
     console.log("testFunction");
 };

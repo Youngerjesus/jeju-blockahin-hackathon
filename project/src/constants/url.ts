@@ -1,0 +1,5 @@
+export const SKKRYPTO_HOMEPAGE = 'http://skkrypto.com/'
+export const SKKRYPTO_FACEBOOK = 'https://web.facebook.com/skkrypto/?_rdc=1&_rdr'
+export const SKKRYPTO_INSTAGRAM = 'https://www.instagram.com/skkrypto/?hl=ko'
+export const SKKRYPTO_BRUNCH = 'https://brunch.co.kr/@skkrypto'
+export const SKKRYPTO_EMAIL = 'skkrypto.io@gmail.com'

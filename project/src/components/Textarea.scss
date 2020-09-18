@@ -1,0 +1,27 @@
+.Textarea__label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  color: #999999;
+  margin-bottom: 8px;
+}
+
+.Textarea__textarea {
+  width: 100%;
+  height: 150px;
+  font-size: 14px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 22px 24px;
+
+  &::placeholder { color: #cccccc; }
+  &--err { border-color: #f54137; }
+}
+
+.Textarea__err {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  color: #f54137;
+}

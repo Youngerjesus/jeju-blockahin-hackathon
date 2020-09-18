@@ -4,6 +4,14 @@ import reset from "styled-reset";
 const GlobalStyles = createGlobalStyle`
     ${reset};
     
+    .ReactModal__Content{
+        padding:0 !important;
+    }
+    
+    .ReactModal__Overlay{
+        background-color: rgba(0,0,0,.5) !important;
+    }
+    
     a{
         text-decoration:none;
         color:inherit;

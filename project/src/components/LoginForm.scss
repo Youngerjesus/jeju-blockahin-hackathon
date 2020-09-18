@@ -1,0 +1,18 @@
+.LoginForm__input {
+  margin-bottom: 16px;
+  & input {
+    padding-left: 48px;
+    background: 16px center / 24px no-repeat url('../assets/images/icon-lock.png');
+  }
+}
+
+.LoginForm{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.LoginForm__button {
+}

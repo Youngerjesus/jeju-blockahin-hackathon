@@ -25,10 +25,53 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>App</title>
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
+    <script type="text/javascript">
+      Kakao.init('917018879c8ed60c1fa021afca16b668');
+      window.Kakao = Kakao;
+      function sendLink() {
+        Kakao.Link.sendDefault({
+          objectType: 'feed',
+          content: {
+            title: '딸기 치즈 케익',
+            description: '#케익 #딸기 #삼평동 #카페 #분위기 #소개팅',
+            imageUrl:
+                    'http://k.kakaocdn.net/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png',
+            link: {
+              mobileWebUrl: 'https://developers.kakao.com',
+              webUrl: 'https://developers.kakao.com',
+            },
+          },
+          social: {
+            likeCount: 286,
+            commentCount: 45,
+            sharedCount: 845,
+          },
+          buttons: [
+            {
+              title: '웹으로 보기',
+              link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com',
+              },
+            },
+            {
+              title: '앱으로 보기',
+              link: {
+                mobileWebUrl: 'https://developers.kakao.com',
+                webUrl: 'https://developers.kakao.com',
+              },
+            },
+          ],
+        })
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

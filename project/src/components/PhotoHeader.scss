@@ -1,0 +1,23 @@
+.PhotoHeader {
+  padding: 24px 24px 24px 72px;
+  border-bottom: 1px solid #e1e1e1;
+  background: 24px center / 40px no-repeat url('../assets/images/icon-profile.png');
+}
+
+.PhotoHeader__owner {
+  display: block;
+  font-weight: bold;
+  line-height: 20px;
+  &:hover { text-decoration: underline; }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.PhotoHeader__location {
+  color: #999999;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

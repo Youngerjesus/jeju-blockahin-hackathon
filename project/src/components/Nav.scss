@@ -1,0 +1,69 @@
+.Nav {
+  width: 100%;
+  height: 75px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: #fff;
+  border: 1px solid #e1e1e1;
+}
+
+.Nav__inner {
+  max-width: 935px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Nav__logo {
+  width: 140px;
+  img { width: 100%; }
+}
+
+.Nav__menus {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Nav__wallet, .Nav__logout {
+  font-size: 14px;
+  line-height: 24px;
+  color: #707070;
+  margin-left: 36px;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    display: block;
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+    background: center / contain no-repeat;
+  }
+
+  &:hover { text-decoration: underline; }
+}
+
+.Nav__wallet::before {
+  background-image: url("../assets/images/icon-wallet.png");
+}
+
+.Nav__logout::before {
+  background-image: url("../assets/images/icon-logout.png");
+}
+
+.Nav__menu {
+  // position: relative;
+  // width: 24px;
+  // height: 24px;
+  // overflow: hidden;
+  // margin-left: 30px;
+  // cursor: pointer;
+
+  // img { width: 100%; }
+}
