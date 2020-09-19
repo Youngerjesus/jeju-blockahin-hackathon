@@ -7,6 +7,7 @@ import UploadModal from "../../components/UploadModal";
 import { connect } from 'react-redux'
 
 interface IProps{
+    address:string
 }
 
 interface IState{
@@ -28,10 +29,7 @@ const DetailPresenter = class DetailPresenter extends React.Component<IProps, IS
     }
 
     render() {
-        const {accountKey}:any = this.props;
-        let address;
-        accountKey ? address = accountKey.payload.accountKey : address = '0xfliajglasjglksajglksajglaksg';
-
+        let {address}:any = this.props;
         return (
             <Container>
                 <Main>
