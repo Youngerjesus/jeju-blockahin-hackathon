@@ -16,11 +16,6 @@ const Nav = () => (
             </h1>
             <div className="Nav__menus">
                 <WalletModal />
-                <button
-                    className="Nav__logout"
-                >
-                    Logout
-                </button>
                 {/* <IconButton
           className="Nav__menu"
           icon="icon-wallet.svg"

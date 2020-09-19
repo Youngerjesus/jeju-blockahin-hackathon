@@ -36,4 +36,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 #### yarn add styled-reset 
 #### yarn add node-sass
 #### yarn add moment 
+#### yarn add axios 
+
 

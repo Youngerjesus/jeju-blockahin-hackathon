@@ -4,8 +4,9 @@ import Input from './Input'
 import InputFile from './InputFile';
 import Textarea from './Textarea';
 import Button from './Button';
-
+import moment from "moment";
 import imageCompression from '../utils/imageCompression';
+import cx from 'classnames'
 
 import "./UploadModalDetail.scss";
 
@@ -18,9 +19,12 @@ interface IState{
     file: string,
     fileName: string,
     location: string,
+    shareAddress: string,
     caption: string,
     warningMessage: string,
     isCompressing: false,
+    memoryDate: number,
+    memoryCalender: string
 }
 
 
@@ -32,8 +36,11 @@ export default class UploadModalDetail extends React.Component<IProps, IState>{
             file: '',
             fileName: '',
             location: '',
+            shareAddress: '',
             caption: '',
             warningMessage: '',
+            memoryCalender: '',
+            memoryDate: moment.now(),
             isCompressing: false,
         };
 
@@ -91,8 +98,14 @@ export default class UploadModalDetail extends React.Component<IProps, IState>{
         }
     }
 
+    dateConverter = (e:any) => {
+        this.setState({
+            memoryDate: moment(e.target.value).unix()
+        });
+    };
+
     render() {
-        const { fileName, location, caption, isCompressing, warningMessage } = this.state
+        const { fileName, location, caption, isCompressing, warningMessage,shareAddress } = this.state
 
         return (
             <Fragment>
@@ -108,6 +121,7 @@ export default class UploadModalDetail extends React.Component<IProps, IState>{
                         accept=".png, .jpg, .jpeg"
                         required
                     />
+
                     <Input
                         className="UploadPhoto__location"
                         name="location"
@@ -117,6 +131,21 @@ export default class UploadModalDetail extends React.Component<IProps, IState>{
                         placeholder="Where did you take this photo?"
                         required
                     />
+
+                    <Input
+                        className="UploadPhoto__location"
+                        name="shareAddress"
+                        label="shareAddress"
+                        value={shareAddress}
+                        onChange={this.handleInputChange}
+                        placeholder="Who do you want to share with?"
+                        required
+                    />
+
+                    <MemoryDateLabel> Memory Date </MemoryDateLabel>
+
+                    <MemoryDateInput onChange={this.dateConverter} type="date"/>
+
                     <Textarea
                         className="UploadPhoto__caption"
                         name="caption"
@@ -126,6 +155,7 @@ export default class UploadModalDetail extends React.Component<IProps, IState>{
                         placeholder="Upload your memories"
                         required
                     />
+
                     <Button
                         className="UploadPhoto__upload"
                         type="submit"
@@ -146,4 +176,21 @@ const Header = styled.header`
     color: #999999;
     justify-content: center;
     align-items: center;
+`;
+
+const MemoryDateLabel = styled.label`
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    color: #999999;
+    margin-bottom: 8px;
+`;
+
+const MemoryDateInput = styled.input`
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid #e1e1e1;
+    padding: 22px 24px;
+    border-radius: 5px;
+    margin-bottom: 24px;
 `;

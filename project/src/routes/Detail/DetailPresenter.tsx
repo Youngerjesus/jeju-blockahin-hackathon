@@ -4,20 +4,34 @@ import Feed from "../../components/Feed";
 import NFT from "../../components/NFT";
 import ReactModal from "react-modal";
 import UploadModal from "../../components/UploadModal";
-interface IProps{
+import { connect } from 'react-redux'
 
+interface IProps{
 }
 
 interface IState{
 }
 
-export default class DetailPresenter extends React.Component<IProps, IState>{
+const mapStateToProps = (state:any) => ({
+    accountKey: state.auth.accountKey,
+})
+
+
+const DetailPresenter = class DetailPresenter extends React.Component<IProps, IState>{
+
+    componentDidMount() {
+        console.log(this.props);
+    }
 
     constructor(props:IProps) {
         super(props);
     }
 
     render() {
+        const {accountKey}:any = this.props;
+        let address;
+        accountKey ? address = accountKey.payload.accountKey : address = '0xfliajglasjglksajglksajglaksg';
+
         return (
             <Container>
                 <Main>
@@ -27,7 +41,7 @@ export default class DetailPresenter extends React.Component<IProps, IState>{
                                 <UserImage src={require("../../assets/images/user.jpg")} />
                             </UserImageBox>
                             <ProfileInfoSection>
-                                <UserAddress> 0xgklasglksajklgjaslkgjlsakgjlsakgjlksajg
+                                <UserAddress> {address}
                                     <UploadModal />
                                 </UserAddress>
                                 <ProfileIntro> 당신의 소중한 순간을 기념으로 포착해서 남겨보세요. </ProfileIntro>
@@ -62,6 +76,8 @@ export default class DetailPresenter extends React.Component<IProps, IState>{
         )
     }
 }
+
+export default connect(mapStateToProps, null)(DetailPresenter);
 
 const Container = styled.section`
   width:calc(100%); 

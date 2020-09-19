@@ -60,7 +60,21 @@ export class LoginForm extends React.Component<IProps, IState> {
                     title="Log in"
                     onClick={this.handleLogin}
                 />
+
+                <Footer> Don't have an account?
+                    <SignUp href="/signup"> Sign Up </SignUp>
+                </Footer>
             </div>
         )
     }
 }
+
+const Footer = styled.footer`
+    font-size: 12px;
+    font-weight: bold;
+    color: #999999;
+`;
+
+const SignUp = styled.a`
+    color: #9e4c42; 
+`

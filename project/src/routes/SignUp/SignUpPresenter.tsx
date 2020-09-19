@@ -3,7 +3,9 @@ import styled from "styled-components";
 import Test from "../../components/Test";
 import SignupForm from "../../components/SignUpForm";
 
-interface IProps{}
+interface IProps{
+    history: any
+}
 
 interface IState {}
 export default class SignUpPresenter extends React.Component<IProps, IState>{
@@ -16,7 +18,7 @@ export default class SignUpPresenter extends React.Component<IProps, IState>{
                 <MainHome>
                     <HomeHeader src={require("../../assets/images/SKKRYPTO.png")} />
                     <UserImage src={require("../../assets/images/user.jpg")} />
-                    <SignupForm />
+                    <SignupForm history={this.props.history} />
                 </MainHome>
             </Container>
         )

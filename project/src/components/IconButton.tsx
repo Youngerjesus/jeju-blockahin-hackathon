@@ -15,7 +15,7 @@ const IconButton = ({
         className={cx('IconButton', className)}
         onClick={onClick}
     >
-        <img src={`images/${icon}`} alt={alt} />
+        <img src={require(`../assets/images/${icon}`)} alt={alt} />
     </button>
 )
 

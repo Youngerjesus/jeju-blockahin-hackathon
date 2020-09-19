@@ -12,8 +12,6 @@ interface IState{
 class HomeContainer extends React.Component<IProps, IState>{
 
     render() {
-        console.log(this.props.history);
-
         return (
             <HomePresenter history={this.props.history} />
         )
