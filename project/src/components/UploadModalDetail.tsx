@@ -7,13 +7,15 @@ import Button from './Button';
 import moment from "moment";
 import imageCompression from '../utils/imageCompression';
 import cx from 'classnames'
-
+import { connect } from 'react-redux'
 import "./UploadModalDetail.scss";
+import * as photoActions from '../redux/actions/photo';
 
 const MAX_IMAGE_SIZE = 30000 // 30KB
 const MAX_IMAGE_SIZE_MB = 0.03 // 30KB
 
-interface IProps{}
+interface IProps{
+}
 
 interface IState{
     file: string,
@@ -28,7 +30,7 @@ interface IState{
 }
 
 
-export default class UploadModalDetail extends React.Component<IProps, IState>{
+const UploadModalDetail = class UploadModalDetail extends React.Component<IProps, IState>{
 
     constructor(props:IProps) {
         super(props);
@@ -76,9 +78,10 @@ export default class UploadModalDetail extends React.Component<IProps, IState>{
 
     handleSubmit = (e:any) => {
         e.preventDefault()
-        const { file, fileName, location, caption } = this.state
+        const { file, fileName, location, shareAddress, caption,  memoryDate} = this.state
+        const {myAddress} : any = this.props;
         // @ts-ignore
-        this.props.uploadPhoto(file, fileName, location, caption)
+        this.props.uploadPhoto(file,fileName,location,caption,shareAddress,memoryDate,myAddress);
         // ui.hideModal()
     }
 
@@ -166,6 +169,18 @@ export default class UploadModalDetail extends React.Component<IProps, IState>{
         )
     }
 }
+
+const mapStateToProps = (state:any) => ({
+    myAddress: state.auth.accountKey.payload.accountKey,
+});
+
+const mapDispatchToProps = (dispatch:any) => ({
+    uploadPhoto: (file:any, fileName:string, location:string, caption:string, shareAddress:string,memoryDate:number,myAddress:any) =>
+        dispatch(photoActions.uploadPhoto(file, fileName, location, caption,shareAddress,memoryDate, myAddress)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UploadModalDetail)
+
 
 const Header = styled.header`
     display:flex;

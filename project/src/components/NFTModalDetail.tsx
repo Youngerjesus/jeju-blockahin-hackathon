@@ -3,16 +3,54 @@ import styled from "styled-components";
 import moment from "moment";
 import Clipboard from 'react-clipboard.js';
 import {css} from "styled-components";
+import { drawImageFromBytes } from "../utils/imageUtils";
+import caver from '../klaytn/caver'
 
-interface IProps{}
+interface IProps{
+    tokenId: number
+}
 interface IState{}
 export default class NFTModalDetail extends React.Component<IProps, IState>{
+    state = {
+        tokenId: 0,
+        numberOfOwners: 0,
+        ownerHistory: [[]],
+        photo: "0x0",
+        title: "",
+        description: "",
+        location: "",
+        memoryDate: 0,
+        recordDate: 0
+    }
+
+    getMemoryDetail = async () => {
+        try {
+            myContract.methods.getMemoryDetail(this.props.tokenId).call()
+                .then((response: any) => {
+                    this.setState({
+                        tokenId: response[0],
+                        numberOfOwners: response[1],
+                        ownerHistory: response[2],
+                        photo: response[3],
+                        title: response[4],
+                        description: response[5],
+                        location: response[6],
+                        memoryDate: response[7],
+                        recordDate: response[8]
+                    })
+                })
+        } catch(error) {}
+    }
+
+    componentDidMount() {
+        this.getMemoryDetail();
+    }
 
     render() {
         return(
             <ModalContainer>
                 <ImageBox>
-                    <Image src={require("../assets/images/baby1.jpg")} />
+                    <Image src={drawImageFromBytes(this.state.photo)} />
                 </ImageBox>
                 <RecordBox>
                     <RecordHeader>
@@ -46,7 +84,7 @@ export default class NFTModalDetail extends React.Component<IProps, IState>{
                             그날의 추억
                         </RecordBodyHeader>
                         <RecordBodyContent>
-                            하루의 기록을 매일 남기고 싶어서... 라는 거창한 이유도 아니였다. 내가 블로그를 쓰기 시작한것은 정말 미치도록 한국말이 하고 싶어서였다. 지금이야 조금씩 랄라와 한국말로 대화를 하곤 하지만, 주변에 한국 사람이라곤 하나도 없는 곳에서 10년을 살고 나니.. 정말 한국말이 너무 하고 싶었다. 아.. 이건 정확하게 100퍼센트 맞는 말은 아닌것 같다. 사실 난 말수가 별로 없는 사람이다. 아이 둘을 키울때도, 내가 너무 말을 하지 않아서 애가 말을 못배우면 어쩌나.. 은근슬쩍 걱정도 되던 사람이다. (랄라가 한국말을 배운건 100퍼센트 랄라를 낮동안 키워주셨던 현정씨 덕분이다!.) 한국말을 하고 싶다는것은, 머리속에서 한국말이 엉키고 설키고, 엉망진창으로 들어앉아 있어, 막 풀어내지 않으면 가슴이 답답한 그런 느낌이었나 보다.
+                            {this.state.description}
                         </RecordBodyContent>
                     </RecordBody>
                     <RecordFooter>
@@ -57,7 +95,7 @@ export default class NFTModalDetail extends React.Component<IProps, IState>{
 
                         <OwnerBox>
                             <OwnerColumn> Owner </OwnerColumn>
-                            <Owner href="https://scope.klaytn.com/account/0x88a5dc8858f0df1fb28c3a94fd58ae5930cb2c76"> 0x88a5dc8858f0df1fb28c3a94fd58ae5930cb2c76 </Owner>
+                            <Owner href="https://scope.klaytn.com/account/0x88a5dc8858f0df1fb28c3a94fd58ae5930cb2c76"> {this.state.ownerHistory[this.state.ownerHistory.length - 1]} </Owner>
                         </OwnerBox>
                     </RecordFooter>
                 </RecordBox>
@@ -235,3 +273,361 @@ const OwnerBox = styled.div`
     display:flex; 
     flex-direction:row; 
 `;
+
+const DEPLOYED_ABI = [
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "interfaceId",
+                "type": "bytes4"
+            }
+        ],
+        "name": "supportsInterface",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getApproved",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "approve",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "ownerOf",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "owner",
+                "type": "address"
+            }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "removeRecord",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getMemoryDetail",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "numberOfOwners",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "ownerHistory",
+                        "type": "address[][]"
+                    },
+                    {
+                        "name": "photo",
+                        "type": "bytes"
+                    },
+                    {
+                        "name": "title",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "location",
+                        "type": "string"
+                    },
+                    {
+                        "name": "memoryDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "recordDate",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "to",
+                "type": "address[]"
+            },
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "target",
+                "type": "address"
+            }
+        ],
+        "name": "getMemoryFeed",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "photo",
+                        "type": "bytes"
+                    }
+                ],
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "owners",
+                "type": "address[]"
+            },
+            {
+                "name": "photo",
+                "type": "bytes"
+            },
+            {
+                "name": "title",
+                "type": "string"
+            },
+            {
+                "name": "description",
+                "type": "string"
+            },
+            {
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "name": "memoryDate",
+                "type": "uint256"
+            }
+        ],
+        "name": "recordMemory",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "from",
+                "type": "address[]"
+            },
+            {
+                "indexed": true,
+                "name": "to",
+                "type": "address[]"
+            },
+            {
+                "indexed": true,
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "Transfer",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "owner",
+                "type": "address[]"
+            },
+            {
+                "indexed": true,
+                "name": "approved",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "Approval",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "tokendId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "name": "photo",
+                "type": "bytes"
+            },
+            {
+                "indexed": false,
+                "name": "title",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "name": "description",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "name": "memoryDate",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "name": "recordDate",
+                "type": "uint256"
+            }
+        ],
+        "name": "MemoryRecorded",
+        "type": "event"
+    }
+]
+const DEPLOYED_ADDRESS = '0x1c0ca9a6aa431b39438aeac9133176987dbb6aaf'
+const myContract = new caver.klay.Contract(DEPLOYED_ABI, DEPLOYED_ADDRESS)
+

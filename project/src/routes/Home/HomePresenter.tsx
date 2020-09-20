@@ -21,6 +21,7 @@ class HomePresenter extends React.Component<IProps, IState>{
             <Container>
                 <Test />
                 <MainImage src={require("../../assets/images/main.png")} />
+                <BabyImage src={require("../../assets/images/certificate2.png")} />
                 <MainHome>
                     <HomeHeader src={require("../../assets/images/SKKRYPTO.png")} />
                     <UserImage src={require("../../assets/images/user.jpg")} />
@@ -44,6 +45,8 @@ const Container = styled.div`
 const MainImage = styled.img`
     display:flex; 
     max-height:600px;
+    width:445px;
+    border-radius:20px;
 `;
 
 const MainHome = styled.div`
@@ -75,6 +78,14 @@ const UserImage = styled.img`
     display:flex;
     width: 100px;
     height: 100px;  
+`;
+
+const BabyImage = styled.img`
+    position:absolute; 
+    width:238px;
+    left:439px;
+    top:403px;
+    height:421px;
 `;
 
 export default HomePresenter;

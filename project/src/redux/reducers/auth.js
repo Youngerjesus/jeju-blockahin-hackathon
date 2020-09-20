@@ -3,7 +3,7 @@ import {
     LOGOUT,
     INTEGRATE_WALLET,
     REMOVE_WALLET,
-    ACCOUNT_KEY
+    ACCOUNT_KEY, DISMISS, UPDATE
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -18,6 +18,19 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoggedIn: true,
+            }
+        case DISMISS:
+            return {
+                ...state,
+                accountKey: '0x',
+                address: '0x'
+            }
+        case UPDATE:
+            console.log(action);
+            return{
+                ...state,
+                accountKey:action.address,
+                address: action.address
             }
         case LOGOUT:
             return {

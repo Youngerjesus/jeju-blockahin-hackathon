@@ -1,7 +1,11 @@
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
-const {createNewAccount} = require('./KAS');
+const {createNewAccount, LookUpAccount, UpdateMultiSigAccount, UpdatePhotoTransaction} = require('./KAS');
+const {MultiSignatureAccount} = require('./Account');
+const {caver} = require('./caver');
+
+
 
 router.get('/account',  async (req,res) => {
     try{
@@ -30,6 +34,10 @@ router.get('/newAccount', async (req,res) => {
             success:false
         });
     }
+});
+
+router.get('/test', async (req, res) => {
+    console.log(caver.utils);
 });
 
 

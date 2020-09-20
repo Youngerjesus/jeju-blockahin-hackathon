@@ -12,3 +12,7 @@ export const HIDE_TOAST = 'HIDE_TOAST'
 
 export const SET_FEED = 'SET_FEED'
 
+export const NOTI_SIGN = 'NOTI_SIGN';
+
+export const DISMISS = "DISMISS";
+export const UPDATE = "UPDATE";

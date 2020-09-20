@@ -6,8 +6,13 @@ import Button from "./Button";
 import Modal from 'react-bootstrap/Modal';
 import ExampleModal from "./ExampleModal";
 import NFTModalDetail from "./NFTModalDetail";
-interface IProps{
 
+import { drawImageFromBytes } from "../utils/imageUtils";
+
+
+interface IProps{
+    tokenId: number,
+    photo: string
 }
 
 interface IState{
@@ -70,11 +75,11 @@ export default class NFT extends React.Component<IProps, IState>{
         return (
             <Fragment>
                 <ReactModal isOpen={modalIsOpen} style={customStyles} onRequestClose={this.closeModal}>
-                    <NFTModalDetail />
+                    <NFTModalDetail tokenId={this.props.tokenId} />
                 </ReactModal>
 
                 <NFTBox onClick={this.openModal} onMouseOver={this.nftMouseHoverEvent} onMouseLeave={this.nftMouseLeaveEvent}>
-                    <NFTImage src={require("../assets/images/baby1.jpg")} />
+                    <NFTImage src={drawImageFromBytes(this.props.photo)} />
                     {NFTOverlayBox}
                 </NFTBox>
             </Fragment>

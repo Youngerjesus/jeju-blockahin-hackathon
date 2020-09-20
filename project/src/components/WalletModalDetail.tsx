@@ -6,45 +6,36 @@ import Input from './Input';
 
 import './WalletInfo.scss';
 import PrivateKeyInput from "./PrivateKeyInput";
+import {connect} from "react-redux";
+import * as authActions from "../redux/actions/auth";
 
 interface IProps{}
 
 interface IState{}
 
-export default class WalletModalDetail extends React.Component<IProps, IState>{
+const WalletModalDetail = class WalletModalDetail extends React.Component<IProps, IState>{
     state = {
         balance: '0',
+        address: '',
     }
 
     componentDidMount() {
     }
 
     render() {
+        console.log(this.props);
+
         return (
             <Fragment>
                 <Header> Wallet Info </Header>
                 <div className="WalletInfo">
-
+                    {/*// @ts-ignore*/}
                     <PrivateKeyInput
                         className="WalletInfo__privateKey"
                         name="privateKey"
-                        label="Wallet PrivateKey"
-                        value="0x"
-                        readOnly/>
-
-                    <PrivateKeyInput
-                        className="WalletInfo__privateKey"
-                        name="privateKey"
-                        label="Wallet PrivateKey"
-                        value="0x"
-                        readOnly/>
-
-                    <Input
-                        className="WalletInfo__address"
-                        name="address"
                         label="Wallet Address"
                         value="0x"
-                        readOnly/>
+                    />
 
                     <Input
                         className="WalletInfo__balance"
@@ -69,6 +60,9 @@ export default class WalletModalDetail extends React.Component<IProps, IState>{
         )
     }
 }
+
+export default connect(null, null)(WalletModalDetail);
+
 
 const Header = styled.header`
     display:flex;

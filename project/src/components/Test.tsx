@@ -5,8 +5,8 @@ import axios from 'axios';
 import {Simulate} from "react-dom/test-utils";
 
 const Test:React.FunctionComponent = (props) => {
-    // console.log(caver);
-    // testFunction();
+    console.log(caver);
+    testFunction();
 
     return (
         <None>

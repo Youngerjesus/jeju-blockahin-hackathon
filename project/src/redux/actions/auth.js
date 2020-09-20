@@ -4,8 +4,11 @@ import {
     LOGOUT,
     INTEGRATE_WALLET,
     REMOVE_WALLET,
+    DISMISS,
+    UPDATE,
     ACCOUNT_KEY
 } from './actionTypes'
+import axios from "axios";
 
 export const integrateWallet = (accountKey) => (dispatch) => {
     // const walletInstance = caver.klay.accounts.privateKeyToAccount(privateKey)
@@ -40,6 +43,28 @@ export const logout = () => (dispatch) => {
     dispatch(removeWallet())
     return dispatch({
         type: LOGOUT,
+    })
+}
+
+export const update = () => (dispatch) => {
+    // axios call
+    axios.get('/c/newAccount')
+        .then(response => {
+            console.log(response);
+            if(response.status === 200) {
+                const accountKey = response.data.address;
+                dispatch({
+                    address:accountKey,
+                    type:UPDATE
+                })
+            }
+    });
+}
+
+
+export const dismiss = () => (dispatch) => {
+    return dispatch({
+        type: DISMISS
     })
 }
 

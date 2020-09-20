@@ -76,5 +76,5 @@ const Footer = styled.footer`
 `;
 
 const SignUp = styled.a`
-    color: #9e4c42; 
+    color: #4f473e; 
 `

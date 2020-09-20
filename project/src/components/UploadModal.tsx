@@ -38,6 +38,7 @@ export default class UploadModal extends React.Component<IProps, IState>{
 
     render() {
         const {uploadModalIsOpen} = this.state;
+
         return (
             <Fragment>
                 <ReactModal isOpen={uploadModalIsOpen} style={customStyles} contentLabel="Upload NFT" onRequestClose={this.closeUploadModal}>

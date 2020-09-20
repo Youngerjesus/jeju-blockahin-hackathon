@@ -5,7 +5,7 @@ import NFT from "../../components/NFT";
 import ReactModal from "react-modal";
 import UploadModal from "../../components/UploadModal";
 import { connect } from 'react-redux'
-
+import caver from "../../klaytn/caver";
 interface IProps{
     address:string
 }
@@ -20,9 +20,41 @@ const mapStateToProps = (state:any) => ({
 
 const DetailPresenter = class DetailPresenter extends React.Component<IProps, IState>{
 
+    state = {
+        memory: []
+    }
+
     componentDidMount() {
         console.log(this.props);
+        this.getMemory();
     }
+
+    refactorValue = (object: string) => {
+        let target = object.split('"');
+        let len = (target.length - 1) / 4;
+        let result = [];
+        for (let i = 0; i < len; i++) {
+            let tmp = {
+                'tokenId': target[i * 4 + 1],
+                'photo': target[i * 4 + 3]
+            }
+            result.push(tmp);
+        }
+        return result;
+    }
+
+    getMemory = async () => {
+        try {
+            myContract.methods.getMemoryFeed(this.props.address).call()
+                .then((response: any) => {
+                    let result = this.refactorValue(JSON.stringify(response));
+                    this.setState({ memory: result });
+                })
+        } catch(error) {
+            this.setState({ memory: [] });
+        }
+    }
+
 
     constructor(props:IProps) {
         super(props);
@@ -30,6 +62,9 @@ const DetailPresenter = class DetailPresenter extends React.Component<IProps, IS
 
     render() {
         let {address}:any = this.props;
+        let {memory}:any = this.state;
+        // @ts-ignore
+        let memoryArray = memory ? memory : [];
         return (
             <Container>
                 <Main>
@@ -65,9 +100,13 @@ const DetailPresenter = class DetailPresenter extends React.Component<IProps, IS
                     </NavBox>
 
                     <NFTBox>
-                        <NFT />
-                        <NFT />
-                        <NFT />
+                        {memoryArray.map((target:any) => {
+                            const tokenId = target["tokenId"];
+                            const photo = target["photo"];
+                            return (
+                                <NFT key={target["tokenId"]} tokenId={tokenId} photo={photo}/>
+                            )
+                        })}
                     </NFTBox>
                 </Main>
             </Container>
@@ -185,7 +224,7 @@ const UserAddress = styled.div`
     display:flex;
     color: rgba(var(--i1d,38,38,38),1);
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 32px;
 `;
 
@@ -266,3 +305,361 @@ const NFTBox = styled.div`
     flex-direction:row; 
     width: 100%;
 `;
+
+
+const DEPLOYED_ABI = [
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "interfaceId",
+                "type": "bytes4"
+            }
+        ],
+        "name": "supportsInterface",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getApproved",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "to",
+                "type": "address"
+            },
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "approve",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "totalSupply",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "ownerOf",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "owner",
+                "type": "address"
+            }
+        ],
+        "name": "balanceOf",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "removeRecord",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getMemoryDetail",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "numberOfOwners",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "ownerHistory",
+                        "type": "address[][]"
+                    },
+                    {
+                        "name": "photo",
+                        "type": "bytes"
+                    },
+                    {
+                        "name": "title",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "location",
+                        "type": "string"
+                    },
+                    {
+                        "name": "memoryDate",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "recordDate",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "to",
+                "type": "address[]"
+            },
+            {
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "target",
+                "type": "address"
+            }
+        ],
+        "name": "getMemoryFeed",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "name": "photo",
+                        "type": "bytes"
+                    }
+                ],
+                "name": "",
+                "type": "tuple[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "owners",
+                "type": "address[]"
+            },
+            {
+                "name": "photo",
+                "type": "bytes"
+            },
+            {
+                "name": "title",
+                "type": "string"
+            },
+            {
+                "name": "description",
+                "type": "string"
+            },
+            {
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "name": "memoryDate",
+                "type": "uint256"
+            }
+        ],
+        "name": "recordMemory",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "from",
+                "type": "address[]"
+            },
+            {
+                "indexed": true,
+                "name": "to",
+                "type": "address[]"
+            },
+            {
+                "indexed": true,
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "Transfer",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "owner",
+                "type": "address[]"
+            },
+            {
+                "indexed": true,
+                "name": "approved",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "name": "tokenId",
+                "type": "uint256"
+            }
+        ],
+        "name": "Approval",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "name": "tokendId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "name": "photo",
+                "type": "bytes"
+            },
+            {
+                "indexed": false,
+                "name": "title",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "name": "description",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "name": "memoryDate",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "name": "recordDate",
+                "type": "uint256"
+            }
+        ],
+        "name": "MemoryRecorded",
+        "type": "event"
+    }
+]
+const DEPLOYED_ADDRESS = '0x1c0ca9a6aa431b39438aeac9133176987dbb6aaf'
+const myContract = new caver.klay.Contract(DEPLOYED_ABI, DEPLOYED_ADDRESS)

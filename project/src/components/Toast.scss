@@ -28,6 +28,8 @@
 }
 
 .Toast__message {
+  width: 340px !important;
+  overflow: hidden;
   font-size: 14px;
   color: #ffffff;
   margin-bottom: 10px;
@@ -80,6 +82,16 @@
   height: 20px;
 }
 
+.Toast__status--success{
+
+}
+
+.Toast--success{
+  background-color: aquamarine !important;
+}
+.Toast__pending{
+  background-color: rgba(79, 71, 62, 0.9) !important;
+}
 @keyframes showToast {
   0% {
     opacity: 1;

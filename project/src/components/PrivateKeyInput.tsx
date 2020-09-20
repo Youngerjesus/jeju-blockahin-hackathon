@@ -2,54 +2,79 @@ import React from 'react'
 import styled from "styled-components";
 // @ts-ignore
 import cx from 'classnames'
+import {connect} from "react-redux";
 
 import './Input.scss'
+import * as authActions from "../redux/actions/auth";
 
-const PrivateKeyInput = ( {
-                    className,
-                    type,
-                    name,
-                    label,
-                    value,
-                    onChange,
-                    placeholder,
-                    err,
-                    readOnly,
-                }:any) => (
+const mapDispatchToProps = (dispatch:any) => ({
+    dismiss: (accountKey:any) => dispatch(authActions.dismiss()),
+    update: (accountKey:any)  => dispatch(authActions.update())
+})
 
-    <div className={cx('Input', className)}>
-        {
-            label &&
-            <label className="Input__label" htmlFor={name}>
-                {label}
-            </label>
-        }
+const mapStateToProps = (state:any) => ({
+    accountKey: state.auth.address ? state.auth.address : '0x'
+});
 
-        <input
-            id={name}
-            type={type || 'text'}
-            name={name}
-            value={value}
-            onChange={onChange}
-            placeholder={placeholder}
-            readOnly={readOnly}
-            className={cx(
-                'Input__input',
-                { 'Input__input--err': err },
-            )}
-            autoComplete="off"
-        />
-        {
-            err &&
-            <p className="Input__err">{err}</p>
-        }
+interface IProps{
+    // @ts-ignore
+    accountKey:any
+    className:any
+    label: any
+    name:any
+    value:any
+    dismiss: any,
+    update: any
+}
+const PrivateKeyInput = class PrivateKeyInput extends React.Component<IProps, any>{
+    constructor(props:IProps) {
+        super(props);
+    }
 
-        <ButtonBox>
-            <UpdateButton> Update </UpdateButton>
-            <DismissButton> Dismiss </DismissButton>
-        </ButtonBox>
-    </div>
-)
+    render() {
+        const {
+            className,
+            name,
+            value,
+            label,
+            dismiss,
+            update,
+            accountKey
+        } = this.props;
+
+        return (
+            <div className={cx('Input', className)}>
+                {
+                    label &&
+                    <label className="Input__label" htmlFor={name}>
+                        {label}
+                    </label>
+                }
+
+                <input
+                    id={name}
+                    type={'text'}
+                    name={name}
+                    value={accountKey}
+                    placeholder={'0x'}
+                    readOnly={true}
+                    className={cx(
+                        'Input__input',
+                    )}
+                    autoComplete="off"
+                />
+
+                <ButtonBox>
+                    <UpdateButton onClick={update}> Update </UpdateButton>
+                    <DismissButton onClick={dismiss}> Dismiss </DismissButton>
+                </ButtonBox>
+            </div>
+        );
+    }
+}
+
+// @ts-ignore
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateKeyInput);
 
 const ButtonBox = styled.div`
     display:flex; 
@@ -89,5 +114,3 @@ const DismissButton = styled.button`
     width: 80px;
     align-items: center;
 `;
-
-export default PrivateKeyInput

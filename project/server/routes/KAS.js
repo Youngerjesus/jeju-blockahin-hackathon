@@ -1,4 +1,6 @@
 const axios = require('axios');
+const {MultiSignatureAccount} = require('./Account');
+const {caver} = require('./caver')
 
 const Initialize = () => {
     const accessKey= "KASK3ULT9GYWOGCU221E0SO1";
@@ -123,19 +125,21 @@ const EnableAccount = () => {
     }));
 };
 
-const UpdateMultiSigAccount = () => {
+const UpdateMultiSigAccount = (address, publicKey1, publicKey2) => {
     return new Promise((resolve => {
-
         const credential = Initialize();
-
-        const address = '0x351ebEA615EB52098e98831F63aD6F5DB8A7714b'
+        // const address = MultiSignatureAccount.address;
 
         const requestBody = {
-            "threshold": 3,
+            "threshold": 2,
             "weightedKeys": [
                 {
-                    "weight": 3,
-                    "publicKey": "0x04d4ad94bad55fb67e64014ce61f68017301ab0288cb7835d1cae20e6c004db03e5d2d8a289794ab819ac8f38226a3d403cbe5616797327e37d2897f412518383d"
+                    "weight": 1,
+                    "publicKey": publicKey1
+                },
+                {
+                    "weight": 1,
+                    "publicKey": publicKey2
                 }
             ]
         };
@@ -153,11 +157,9 @@ const UpdateMultiSigAccount = () => {
 
         axios(config)
             .then((response) => {
-                console.log(response);
-                resolve(response);
+                resolve(response.data);
             })
             .catch((error) => {
-                console.log(error);
                 resolve(error);
             });
     }));
@@ -244,15 +246,15 @@ const FeeDelegationSendKlayTransaction = () => {
     }));
 };
 
-const LookUpAccount = () => {
+const LookUpAccount = (address) => {
     return new Promise((resolve => {
         const credential = Initialize();
 
-        const address = '0x351ebEA615EB52098e98831F63aD6F5DB8A7714b'
+        const myAddress = address;
 
         const config = {
             method: 'get',
-            url: `https://wallet-api.klaytnapi.com/v2/account/${address}`,
+            url: `https://wallet-api.klaytnapi.com/v2/account/${myAddress}`,
             headers: {
                 'x-chain-id': '1001',
                 'Authorization': `Basic ${credential}`,
@@ -262,14 +264,124 @@ const LookUpAccount = () => {
 
         axios(config)
             .then((response) => {
-                console.log(response);
-                resolve(response);
+                resolve(response.data);
             })
             .catch((error) => {
-                console.log(error);
                 resolve(error);
             });
     }));
 };
 
-module.exports  = {createNewAccount};
+const UpdatePhotoTransaction = (multiSigAddress, address1, address2, file, fileName, fileDescription, fileLocation,fileMemoryDate ) => {
+    return new Promise((resolve => {
+        const DEPLOYED_ADDRESS = '0x1c0ca9a6aa431b39438aeac9133176987dbb6aaf'
+        const owners = [address1, address2]
+        const photo = caver.utils.hexToBytes(file)
+        const title = fileName
+        const description = fileDescription
+        const location = fileLocation
+        const memoryDate = fileMemoryDate
+        const credential = Initialize();
+
+        const executeContractObject = caver.klay.abi.encodeFunctionCall({
+            name: 'recordMemory',
+            type: 'function',
+            inputs: [{
+                type: 'address[]',
+                name: 'owners'
+            },{
+                type: 'bytes',
+                name: 'photo'
+            },{
+                type: 'string',
+                name: 'title'
+            },{
+                type: 'string',
+                name: 'description'
+            },{
+                type: 'string',
+                name: 'location'
+            },{
+                type: 'uint256',
+                name: 'memoryDate'
+            }]
+        }, [owners, photo, title, description, location, memoryDate])
+
+        const configForExecuteContract = {
+            method: 'POST',
+            url: `https://wallet-api.klaytnapi.com/v2/tx/fd/contract/execute`,
+            headers: {
+                'x-chain-id': '1001',
+                'Authorization': `Basic ${credential}`,
+                'Content-Type': 'application/json'
+            },
+            data: {
+                from: address1,
+                to: DEPLOYED_ADDRESS,
+                input: executeContractObject,
+                gas: 5000000,
+                submit: true,
+                feeRatio: 99
+            }
+        }
+
+        axios(configForExecuteContract)
+            .then((response) => {
+                resolve(response.data);
+            })
+            .catch((error) => {
+                resolve(error);
+        })
+    }));
+};
+
+const signTransaction = (address, transactionId)=> {
+    return new Promise((resolve => {
+        const credential = Initialize();
+
+        const config = {
+            method: 'post',
+            url: `https://wallet-api.klaytnapi.com/v2/multisig/account/${address}/tx/${transactionId}/sign`,
+            headers: {
+                'x-chain-id': '1001',
+                'Authorization': `Basic ${credential}`,
+                'Content-Type': 'application/json'
+            }
+        };
+
+        axios(config)
+            .then((response)=> {
+                resolve(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+                resolve(error);
+            })
+    }));
+}
+
+const getTransaction = (address) => {
+    return new Promise((resolve => {
+        const credential = Initialize();
+
+        const config = {
+            method: 'get',
+            url: `https://wallet-api.klaytnapi.com/v2/multisig/account/${address}/tx/`,
+            headers: {
+                'x-chain-id': '1001',
+                'Authorization': `Basic ${credential}`,
+                'Content-Type': 'application/json'
+            }
+        };
+
+        axios(config)
+            .then((response)=> {
+                resolve(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+                resolve(error);
+            })
+    }));
+}
+module.exports  = {createNewAccount, LookUpAccount, UpdateMultiSigAccount, UpdatePhotoTransaction, signTransaction,getTransaction};

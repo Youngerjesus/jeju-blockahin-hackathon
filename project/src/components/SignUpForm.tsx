@@ -20,7 +20,7 @@ class SignupForm extends React.Component<IProps, IState> {
     }
 
     generateAccountKey = async () => {
-        axios.get('/api/newAccount')
+        axios.get('/c/newAccount')
             .then(response => {
                 console.log(response);
                 if(response.status === 200){

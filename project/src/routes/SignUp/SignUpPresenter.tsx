@@ -15,6 +15,7 @@ export default class SignUpPresenter extends React.Component<IProps, IState>{
             <Container>
                 <Test />
                 <MainImage src={require("../../assets/images/main.png")} />
+                <BabyImage src={require("../../assets/images/certificate2.png")} />
                 <MainHome>
                     <HomeHeader src={require("../../assets/images/SKKRYPTO.png")} />
                     <UserImage src={require("../../assets/images/user.jpg")} />
@@ -70,4 +71,14 @@ const UserImage = styled.img`
     width: 100px;
     height: 100px;  
 `;
+
+const BabyImage = styled.img`
+    position:absolute; 
+    width:238px;
+    left:439px;
+    top:403px;
+    height:421px;
+`;
+
+
 
