@@ -46,7 +46,7 @@ const PrivateKeyInput = class PrivateKeyInput extends React.Component<IProps, an
 
         // setTimeout(accountKey = '0xb098b1C591c3a41bbe894AA0A11c1bB38a37Bd41', 1000);
         if(accountKey == null){
-            accountKey = wgindow.location.pathname.split('detail/')[1];
+            accountKey = window.location.pathname.split('detail/')[1];
         }
 
         return (
