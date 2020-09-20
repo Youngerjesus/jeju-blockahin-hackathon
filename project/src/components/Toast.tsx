@@ -11,7 +11,11 @@ import io from 'socket.io-client';
 import {showModal} from '../redux/actions/ui';
 import axios from 'axios';
 
+const EventEmitter = require('events').EventEmitter;
+const myEventEmitter = new EventEmitter();
+
 const socket = io.connect('localhost:5000');
+
 
 const SignNotification = (dispatch:any) => {
     socket.on('signEvent', (payload:any) => {
@@ -29,17 +33,20 @@ const SignNotification = (dispatch:any) => {
         return dispatch(showModal(content))
     });
 
-    socket.on('successEvent' , (payload:any) => {
-        console.log("signEvent");
 
-        const content = {
-            message: `${payload.address} sign success!!`,
-            status: 'success',
-            data: payload.transactionId,
-            link: ''
-        }
+    myEventEmitter.on('connectLogin', (address:string)=> {
+        socket.on(address,(payload:any) => {
+            console.log("successEvent");
 
-        return dispatch(showModal(content))
+            const content = {
+                message: `${payload.address} sign success!!`,
+                status: 'success',
+                data: payload.transactionId,
+                link: ''
+            }
+
+            return dispatch(showModal(content))
+        });
     });
 };
 
@@ -67,6 +74,14 @@ class Toast extends Component {
     render() {
         let { toast,address }:any = this.props
         let notification = this.processingMessage(toast.modal);
+
+        if(!address){
+            address = window.location.pathname.split('detail/')[1];
+        }
+
+        if(address){
+            myEventEmitter.emit('connectLogin', address);
+        }
 
         let ToastBox = <PendingBox> </PendingBox>;
         console.log(address);

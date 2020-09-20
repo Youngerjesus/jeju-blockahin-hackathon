@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch:any) => ({
 })
 
 const mapStateToProps = (state:any) => ({
-    accountKey: state.auth.address ? state.auth.address : '0x'
+    accountKey: state.auth.address ? state.auth.address : null
 });
 
 interface IProps{
@@ -32,7 +32,7 @@ const PrivateKeyInput = class PrivateKeyInput extends React.Component<IProps, an
     }
 
     render() {
-        const {
+        let {
             className,
             name,
             value,
@@ -41,6 +41,13 @@ const PrivateKeyInput = class PrivateKeyInput extends React.Component<IProps, an
             update,
             accountKey
         } = this.props;
+
+        console.log(accountKey)
+
+        // setTimeout(accountKey = '0xb098b1C591c3a41bbe894AA0A11c1bB38a37Bd41', 1000);
+        if(accountKey == null){
+            accountKey = wgindow.location.pathname.split('detail/')[1];
+        }
 
         return (
             <div className={cx('Input', className)}>

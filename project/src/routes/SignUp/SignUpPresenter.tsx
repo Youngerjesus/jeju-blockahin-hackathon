@@ -75,8 +75,8 @@ const UserImage = styled.img`
 const BabyImage = styled.img`
     position:absolute; 
     width:238px;
-    left:439px;
-    top:403px;
+    left:977px;
+    top:428px;
     height:421px;
 `;
 

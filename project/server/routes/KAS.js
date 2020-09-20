@@ -319,7 +319,7 @@ const UpdatePhotoTransaction = (multiSigAddress, address1, address2, file, fileN
                 from: address1,
                 to: DEPLOYED_ADDRESS,
                 input: executeContractObject,
-                gas: 5000000,
+                gas: 50000000,
                 submit: true,
                 feeRatio: 99
             }

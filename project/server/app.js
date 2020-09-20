@@ -37,7 +37,7 @@ myEventEmitter.on('signEvent', (transactionObj) => {
 
 myEventEmitter.on('successEvent', (payload) => {
     connections.forEach((socket) => {
-        socket.emit('successEvent', payload);
+        socket.emit(payload.address, payload);
     });
 });
 

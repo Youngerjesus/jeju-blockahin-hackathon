@@ -79,7 +79,15 @@ const UploadModalDetail = class UploadModalDetail extends React.Component<IProps
     handleSubmit = (e:any) => {
         e.preventDefault()
         const { file, fileName, location, shareAddress, caption,  memoryDate} = this.state
-        const {myAddress} : any = this.props;
+        let {myAddress} : any = this.props;
+
+        console.log(myAddress);
+
+        if(!myAddress.address){
+            myAddress = window.location.pathname.split('detail/')[1];
+        }else {
+            myAddress = myAddress.address;
+        }
         // @ts-ignore
         this.props.uploadPhoto(file,fileName,location,caption,shareAddress,memoryDate,myAddress);
         // ui.hideModal()
@@ -109,7 +117,6 @@ const UploadModalDetail = class UploadModalDetail extends React.Component<IProps
 
     render() {
         const { fileName, location, caption, isCompressing, warningMessage,shareAddress } = this.state
-
         return (
             <Fragment>
                 <Header> Upload Event NFT </Header>
@@ -164,6 +171,8 @@ const UploadModalDetail = class UploadModalDetail extends React.Component<IProps
                         type="submit"
                         title="Upload"
                     />
+
+
                 </form>
             </Fragment>
         )
@@ -171,7 +180,7 @@ const UploadModalDetail = class UploadModalDetail extends React.Component<IProps
 }
 
 const mapStateToProps = (state:any) => ({
-    myAddress: state.auth.accountKey.payload.accountKey,
+    myAddress: state.auth
 });
 
 const mapDispatchToProps = (dispatch:any) => ({

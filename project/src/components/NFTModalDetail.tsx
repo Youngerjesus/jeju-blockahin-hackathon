@@ -47,6 +47,7 @@ export default class NFTModalDetail extends React.Component<IProps, IState>{
     }
 
     render() {
+
         return(
             <ModalContainer>
                 <ImageBox>
@@ -95,7 +96,7 @@ export default class NFTModalDetail extends React.Component<IProps, IState>{
 
                         <OwnerBox>
                             <OwnerColumn> Owner </OwnerColumn>
-                            <Owner href="https://scope.klaytn.com/account/0x88a5dc8858f0df1fb28c3a94fd58ae5930cb2c76"> {this.state.ownerHistory[this.state.ownerHistory.length - 1]} </Owner>
+                            <Owner href={`https://baobab.scope.klaytn.com/account/${this.state.ownerHistory[this.state.ownerHistory.length - 1][0]}`}> {this.state.ownerHistory[this.state.ownerHistory.length - 1]} </Owner>
                         </OwnerBox>
                     </RecordFooter>
                 </RecordBox>
@@ -211,6 +212,7 @@ const RecordBody = styled.div`
 const RecordBodyContent = styled.div`
     line-height: 1.8;
     display:flex;
+    word-break: break-all;
     font-family: "Helvetica Neue",helvetica,AppleSDGothicNeo,sans-serif;
 `;
 
