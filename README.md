@@ -46,7 +46,12 @@
 ***
 ### System Architecture
 
-<img src="./project/src/assets/images/system_architecture.png" width="200">
+<img src="./project/src/assets/images/system_architecture.png" width="100%" height="100%">
+
+***
+### User Flow 
+
+<img src="./project/src/assets/images/userflow.png" width="100%" height="100%">
 
 ### Please read Project Folder README.md
 
