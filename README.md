@@ -99,7 +99,7 @@ NFT는 현재 위, 변조 및 복제가 만연한 디지털 환경에서 의도�
 
 | [<img alt="JeongMin Yeo" src="https://avatars2.githubusercontent.com/u/28587291?s=460&u=6f0ea3151a3dbc07155e95fc5a3e9e156cbd5cb5&v=4" width="100">](hhttps://github.com/Youngerjesus) | [<img alt="SeungHo Park" src="https://avatars0.githubusercontent.com/u/63057703?s=460&v=4" width="100">](https://github.com/JoonPark0221) |  [<img alt="MinSeung Shin" src="https://avatars2.githubusercontent.com/u/53426778?s=460&v=4" width="100">](https://github.com/minseungShin) |
 |:-----:|:-----:|:-----:|
-| [JeongMin Yeo](hhttps://github.com/Youngerjesus) | [SeungHo Park](https://github.com/JoonPark0221)  | [JunHo Bae](https://github.com/JunhoBae999)      | [YongWook Lee](https://github.com/yongwookLee)   | [JiYeon Jin](https://instagram.com/skkrypto)     | [DongWoo Jeong](https://github.com/DongwooJeong) |[MinSeung Shin](https://github.com/minseungShin) |
+| [JeongMin Yeo](hhttps://github.com/Youngerjesus) | [SeungHo Park](https://github.com/JoonPark0221)  |  [MinSeung Shin](https://github.com/minseungShin) |
 | 🔥  | 🔥  |  🔥   |
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#contributors)
